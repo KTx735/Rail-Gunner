@@ -7,29 +7,27 @@ public class PlayerControls : MonoBehaviour
 {
 
     [SerializeField] InputAction movement;
-    [SerializeField] float controlSpeed = 10f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float controlSpeed = 20f;
+    [SerializeField] float xRange = 5f;
+    [SerializeField] float yRange = 5f;
 
     // Update is called once per frame
     void Update()
     {
-        float xThrow = movement.ReadValue<Vector2>().x;
-        float yThrow = movement.ReadValue<Vector2>().y;
-        float xOffSet = xThrow * Time.deltaTime * controlSpeed;
-        float yOffset = yThrow * Time.deltaTime * controlSpeed;;
-        float newXPos = transform.localPosition.x + xOffSet;
-        float newYPos = transform.localPosition.y + yOffset;
+        float xThrow = movement.ReadValue<Vector2>().x; //Movement in x
+        float yThrow = movement.ReadValue<Vector2>().y; //Movement in y
 
-        //Debug:
-        Debug.Log(xThrow);
-        Debug.Log(yThrow);
+        float xOffSet = xThrow * Time.deltaTime * controlSpeed; //Movement * FR (To keep movement independent) * Speed
+        float yOffset = yThrow * Time.deltaTime * controlSpeed; //Movement * FR (To keep movement independent) * Speed
+        
+        float rawXPos = transform.localPosition.x + xOffSet; //New position for x
+        float rawYPos = transform.localPosition.y + yOffset; //New position for y
 
-        transform.localPosition = new Vector3(newXPos, newYPos, transform.localPosition.z);
+        //Clamp
+        float clampedXPos = Mathf.Clamp(rawXPos, -xRange, xRange); //Restrict Movement for x
+        //float clampedYPos = Mathf.Clamp(rawYPos, -yRange, yRange); //Restrict Movement for y
+
+        transform.localPosition = new Vector3(clampedXPos, rawYPos, transform.localPosition.z);
     }
 
     void OnEnable()
