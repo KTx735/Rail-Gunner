@@ -284,8 +284,21 @@ MonoBehaviour:
       m_Action: Movement
       m_Flags: 8
     m_Flags: 0
+  fire:
+    m_Name: Fire
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 21d68c9c-b371-4342-8d97-1a568cbe8edd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   controlSpeed: 20
+  xRange: 8.6
+  yRangePos: 6.6
+  yRangeNeg: 3.1
   positionPitchFactor: -3
-  controlPitchFactor: -3
   positionYawFactor: -3
+  controlPitchFactor: -3
   controlRollFactor: -3
+  lasers: []

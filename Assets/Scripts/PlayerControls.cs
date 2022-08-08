@@ -6,17 +6,31 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
 
+    [Header("General Setup Setting")]
     [SerializeField] InputAction movement;
+    [SerializeField] InputAction fire;
+
+    [Tooltip("How fast the ship moves up and down")] 
     [SerializeField] float controlSpeed = 20f;
+    [Tooltip("How far the ship moves horizontally")]
+    [SerializeField] float xRange = 8.6f;
+    [Tooltip("How far the ship moves vertically")]
+    [SerializeField] float yRangePos = 6.6f;
+    [Tooltip("How far the ship moves vertically")]
+    [SerializeField] float yRangeNeg = 3.1f;
 
-    /*[SerializeField]*/ float xRange = 8.6f;
-    /*[SerializeField]*/ float yRangePos = 6.6f;
-    /*[SerializeField]*/ float yRangeNeg = 3.1f;
-
+    [Header("Screen Position Based Turning")]
     [SerializeField] float positionPitchFactor = -3f;
-    [SerializeField] float controlPitchFactor = -3f;
     [SerializeField] float positionYawFactor = -3f;
+
+    [Header("Player Input Based Turning")]
+    [SerializeField] float controlPitchFactor = -3f;
     [SerializeField] float controlRollFactor = -3;
+
+    //Set up array for the lasers
+    [Header("Laser Array Setup")]
+    [Tooltip("Add lasers for ship here")]
+    [SerializeField] GameObject[] lasers;
 
     float xThrow;
     float yThrow;
@@ -26,16 +40,19 @@ public class PlayerControls : MonoBehaviour
     {
         ProcessTranslation();
         ProcessRotation();
+        ProcessFiring();
     }
 
     void OnEnable()
     {
         movement.Enable();
+        fire.Enable();
     }
 
     void OnDisable()
     {
         movement.Disable();
+        fire.Disable();
     }
 
     void ProcessTranslation() //Movement of the ship
@@ -66,6 +83,27 @@ public class PlayerControls : MonoBehaviour
         float yaw = transform.localPosition.x * positionYawFactor;
         float roll = xThrow * controlRollFactor;
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    void ProcessFiring()
+    {
+        if (fire.ReadValue<float>() > 0.5)
+        {
+            setLaserActive(true);
+        }
+        else
+        {
+            setLaserActive(false);
+        }
+    }
+
+    void setLaserActive(bool state)
+    {
+        foreach (GameObject laser in lasers) //Object in array
+        {
+            var emissionModule = laser.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = state;
+        }
     }
 
 }
