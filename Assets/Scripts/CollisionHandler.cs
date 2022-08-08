@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [Tooltip("Delay time when the level restart")]
-    [SerializeField] float levelLoadDelay = 2;
+    [SerializeField] float levelLoadDelay = 1f;
 
     void OnCollisionEnter(Collision other) {
         Debug.Log(this.name + " collided with " + other.gameObject.name);
