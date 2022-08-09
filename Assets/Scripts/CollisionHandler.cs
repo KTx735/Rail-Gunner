@@ -7,6 +7,9 @@ public class CollisionHandler : MonoBehaviour
 {
     [Tooltip("Delay time when the level restart")]
     [SerializeField] float levelLoadDelay = 1f;
+    [Header("VFX")]
+    [Tooltip("VFX for when an explosion occurs")]
+    [SerializeField] ParticleSystem explosion;
 
     void OnCollisionEnter(Collision other) {
         Debug.Log(this.name + " collided with " + other.gameObject.name);
@@ -27,8 +30,10 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
-        //Disable player controls
-        GetComponent<PlayerControls>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false; //Disable Box Collider when we crash
+        GetComponent<PlayerControls>().enabled = false; //Disable player controls
+        explosion.Play();
         Invoke("ReloadLevel", levelLoadDelay);
     }
 }
