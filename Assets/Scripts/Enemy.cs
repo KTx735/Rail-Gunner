@@ -6,8 +6,10 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] GameObject deathVFX;
+    [SerializeField] GameObject HitVFX;
     [SerializeField] Transform parent;
     [SerializeField] int scorePerHit = 15;
+    [SerializeField] int hitPoints = 3;
 
     //Reference to ScoreBoard
     ScoreBoard scoreBoard;
@@ -17,16 +19,29 @@ public class Enemy : MonoBehaviour
         //FindObjectOfType looks at the entire project and serach for ScoreBoard
         //FindObjectOfType is good to use on start and not on update
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        AddRigidbody();
+    }
+
+    void AddRigidbody()
+    {
+        Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+        rb.useGravity = false;
     }
 
     void OnParticleCollision(GameObject other) 
     {
         ProcessHit();
-        KillEnemy();
+        if (hitPoints < 1)
+        {
+            KillEnemy();
+        }
     }
 
     void ProcessHit()
     {
+        GameObject vfx = Instantiate(HitVFX, transform.position, Quaternion.identity);
+        vfx.transform.parent = parent;
+        hitPoints--;
         scoreBoard.IncreaseScore(scorePerHit);
     }
 

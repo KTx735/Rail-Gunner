@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7899573318975349979}
   - component: {fileID: 1291895015884116661}
   m_Layer: 0
-  m_Name: Enemy Explosion VFX
+  m_Name: HitVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,11 +227,11 @@ ParticleSystem:
       maxColor: {r: 0.9056604, g: 0.12986916, b: 0.09825563, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.990566, g: 0, b: 0.06637775, a: 1}
-        key1: {r: 0.9622642, g: 0.29851556, b: 0.040850822, a: 1}
-        key2: {r: 0.8301887, g: 0.66234064, b: 0.23104309, a: 0}
-        key3: {r: 0.6886792, g: 0.19166073, b: 0.21092431, a: 0}
-        key4: {r: 0.9433962, g: 0.37600753, b: 0.15574935, a: 0}
+        key0: {r: 0, g: 0.07051988, b: 0.99215686, a: 1}
+        key1: {r: 0.08798364, g: 0.03921567, b: 0.9607843, a: 1}
+        key2: {r: 0.8301887, g: 0.66234064, b: 0.23104309, a: 1}
+        key3: {r: 0.19215685, g: 0.22349875, b: 0.6901961, a: 1}
+        key4: {r: 0.22406648, g: 0.15686274, b: 0.94509804, a: 0}
         key5: {r: 1, g: 0.7928598, b: 0.0047169924, a: 0}
         key6: {r: 0.9716981, g: 0.4509813, b: 0.23375754, a: 0}
         key7: {r: 1, g: 0.84452724, b: 0.2028302, a: 0}
@@ -244,16 +244,16 @@ ParticleSystem:
         ctime6: 60716
         ctime7: 65535
         atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
+        atime1: 23130
+        atime2: 41827
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 1
         m_NumColorKeys: 8
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -286,7 +286,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.52
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
