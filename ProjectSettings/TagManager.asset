@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Spawn at Runtime
   layers:
   - Default
   - TransparentFX

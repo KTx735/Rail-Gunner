@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject deathVFX;
     [SerializeField] GameObject HitVFX;
-    [SerializeField] Transform parent;
+    GameObject parentGameObject;
     [SerializeField] int scorePerHit = 15;
     [SerializeField] int hitPoints = 3;
 
@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
         //FindObjectOfType looks at the entire project and serach for ScoreBoard
         //FindObjectOfType is good to use on start and not on update
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        parentGameObject = GameObject.FindWithTag("Spawn at Runtime");
         AddRigidbody();
     }
 
@@ -40,7 +41,7 @@ public class Enemy : MonoBehaviour
     void ProcessHit()
     {
         GameObject vfx = Instantiate(HitVFX, transform.position, Quaternion.identity);
-        vfx.transform.parent = parent;
+        vfx.transform.parent = parentGameObject.transform;
         hitPoints--;
         scoreBoard.IncreaseScore(scorePerHit);
     }
@@ -48,7 +49,7 @@ public class Enemy : MonoBehaviour
     void KillEnemy()
     {
         GameObject vfx = Instantiate(deathVFX, transform.position, Quaternion.identity);
-        vfx.transform.parent = parent;
+        vfx.transform.parent = parentGameObject.transform;
         Destroy(gameObject);
     }
 }
