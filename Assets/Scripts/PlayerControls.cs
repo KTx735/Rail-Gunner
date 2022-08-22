@@ -13,11 +13,11 @@ public class PlayerControls : MonoBehaviour
     [Tooltip("How fast the ship moves up and down")] 
     [SerializeField] float controlSpeed = 20f;
     [Tooltip("How far the ship moves horizontally")]
-    [SerializeField] float xRange = 8.6f;
+    [SerializeField] float xRange = 10f;
     [Tooltip("How far the ship moves vertically")]
-    [SerializeField] float yRangePos = 6.6f;
+    [SerializeField] float yRangePos = 8f;
     [Tooltip("How far the ship moves vertically")]
-    [SerializeField] float yRangeNeg = 3.1f;
+    [SerializeField] float yRangeNeg = 5f;
 
     [Header("Screen Position Based Turning")]
     [SerializeField] float positionPitchFactor = -3f;
@@ -39,7 +39,7 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         ProcessTranslation();
-        ProcessRotation();
+        //ProcessRotation(); //Deactivated because rotation caused the player to not be able to shoot straight
         ProcessFiring();
     }
 
@@ -73,7 +73,8 @@ public class PlayerControls : MonoBehaviour
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
     }
 
-    void ProcessRotation()
+    //Deactivated (Could be used later in development)
+    void ProcessRotation() //Rotation of the ship
     {
 
         float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
