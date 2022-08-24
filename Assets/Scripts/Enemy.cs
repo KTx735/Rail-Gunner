@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField] GameObject deathVFX;
+    [SerializeField] GameObject deathVFX_SFX;
     [SerializeField] GameObject HitVFX;
     GameObject parentGameObject;
     [SerializeField] int scorePerHit = 15;
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     void KillEnemy()
     {
-        GameObject vfx = Instantiate(deathVFX, transform.position, Quaternion.identity);
+        GameObject vfx = Instantiate(deathVFX_SFX, transform.position, Quaternion.identity);
         vfx.transform.parent = parentGameObject.transform;
         Destroy(gameObject);
     }

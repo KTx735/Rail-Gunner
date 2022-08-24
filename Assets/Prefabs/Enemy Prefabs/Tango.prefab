@@ -918,6 +918,7 @@ GameObject:
   - component: {fileID: 8607874449915004330}
   - component: {fileID: 8579990396523124522}
   - component: {fileID: 8588440562564659992}
+  - component: {fileID: 259798556876179468}
   m_Layer: 0
   m_Name: Tango
   m_TagString: Untagged
@@ -991,6 +992,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &259798556876179468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602248559880322386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44fef29ff3cb7454c88fc9e9073bcd3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathVFX_SFX: {fileID: 2070038796283810693, guid: ba1846b765075c4499d6c887bfa74564, type: 3}
+  HitVFX: {fileID: 2070038796283810693, guid: 21cdb3b0008bb63458415c3c1fdd26fc, type: 3}
+  scorePerHit: 15
+  hitPoints: 3
 --- !u!1 &9131441744374708176
 GameObject:
   m_ObjectHideFlags: 0
