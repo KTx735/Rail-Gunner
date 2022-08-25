@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 7780871546470827984}
   - component: {fileID: 7780871546470827991}
   - component: {fileID: 7780871546470827990}
+  - component: {fileID: 3214936293469881116}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -156,6 +157,66 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7780871546470827989}
   m_Enabled: 1
+--- !u!114 &3214936293469881116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7780871546470827989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 7780871546470827984}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 1
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1001 &4615861693164662217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,6 +274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c3b4e7b9c733164b9753deb4e645ac6, type: 3}
+--- !u!198 &8853466845966224348 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4238732710881420821, guid: 6c3b4e7b9c733164b9753deb4e645ac6, type: 3}
+  m_PrefabInstance: {fileID: 4615861693164662217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7780871546058476415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -268,8 +334,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2865137613066985384, guid: 585a163d70404bd44b752739f5cf7ca7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 585a163d70404bd44b752739f5cf7ca7, type: 3}
+--- !u!1 &2233894364771712136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8429426117402982391, guid: 585a163d70404bd44b752739f5cf7ca7, type: 3}
+  m_PrefabInstance: {fileID: 7780871546058476415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6316390553006968786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4346931092899464365, guid: 585a163d70404bd44b752739f5cf7ca7, type: 3}
+  m_PrefabInstance: {fileID: 7780871546058476415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6978199108082370504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 805227820043209911, guid: 585a163d70404bd44b752739f5cf7ca7, type: 3}
@@ -345,10 +425,26 @@ MonoBehaviour:
     m_Name: Fire
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 21d68c9c-b371-4342-8d97-1a568cbe8edd
+    m_Id: 550b9fb8-8454-4c01-bc77-c377e4862975
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 448ebb9f-4c89-442c-8e84-69cde3709b2f
+      m_Path: <Keyboard>/shift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire
+      m_Flags: 0
+    - m_Name: 
+      m_Id: ace72c8c-5e7f-45d9-8abf-413d4a0d38f3
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire
+      m_Flags: 0
     m_Flags: 0
   controlSpeed: 20
   xRange: 10
@@ -358,4 +454,36 @@ MonoBehaviour:
   positionYawFactor: -3
   controlPitchFactor: -3
   controlRollFactor: -3
-  lasers: []
+  lasers:
+  - {fileID: 6316390553006968786}
+  - {fileID: 2233894364771712136}
+--- !u!54 &732997886
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980381073019992532}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &732997884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980381073019992532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8495c74d7131ac544ae4f1ca8259da02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelLoadDelay: 1
+  explosion: {fileID: 8853466845966224348}
