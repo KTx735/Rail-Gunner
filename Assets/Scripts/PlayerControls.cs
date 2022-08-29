@@ -11,13 +11,13 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] InputAction fire;
 
     [Tooltip("How fast the ship moves up and down")] 
-    [SerializeField] float controlSpeed = 20f;
+    [SerializeField] float controlSpeed = 35f;
     [Tooltip("How far the ship moves horizontally")]
-    [SerializeField] float xRange = 10f;
+    [SerializeField] float xRange = 16.5f;
     [Tooltip("How far the ship moves vertically")]
-    [SerializeField] float yRangePos = 8f;
+    [SerializeField] float yRangePos = 10f;
     [Tooltip("How far the ship moves vertically")]
-    [SerializeField] float yRangeNeg = 5f;
+    [SerializeField] float yRangeNeg = 6f;
 
     [Header("Screen Position Based Turning")]
     [SerializeField] float positionPitchFactor = -3f;
@@ -104,6 +104,14 @@ public class PlayerControls : MonoBehaviour
         {
             var emissionModule = laser.GetComponent<ParticleSystem>().emission;
             emissionModule.enabled = state;
+        }
+    }
+
+    void QuitApplication()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 
